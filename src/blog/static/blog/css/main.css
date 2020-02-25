@@ -44,3 +44,8 @@ body{
 }
 
 /* end sidebar */
+
+.comment{
+    background-color: #f8f8f8;
+    border: 1px dashed #ccc;
+}
