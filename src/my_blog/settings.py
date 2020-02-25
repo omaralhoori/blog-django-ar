@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
-    'user.apps.UserConfig'
+    'user.apps.UserConfig',
+    'crispy_forms'
 ]
 
 MIDDLEWARE = [
@@ -124,3 +125,5 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR, "static"),
 #     'E:\django\Blogger\src\static'
 # ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

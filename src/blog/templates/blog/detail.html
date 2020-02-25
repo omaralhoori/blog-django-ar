@@ -1,0 +1,19 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block content %}
+        <div class="border p-3 mb-3">
+            <img class="img-fluid rounded-circle border m-2 " src="{% static 'blog/images/favicon.png' %}" width="100px" alt="صورة الناشر" />
+            <span class="text-secondary">نشر في {{post.post_date|date:'d-m-Y'}}
+            <h3><a class="text-dark" href="">{{post.title}}</a></h3>
+            <p>{{post.content}}</p>
+        </div>
+        <div>
+            <h1 class="border-bottom">التعليقات</h1>
+            {% for comment in comments %}
+                <small>{{comment.name}} في {{comment.comment_date|date:'d-m-Y'}}</small>
+                <p>{{comment.body}}</p>
+            {% endfor %}
+        </div>
+{% endblock content %}
+    

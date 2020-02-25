@@ -14,3 +14,33 @@ body{
 .dropdown-menu .dropdown-item{
     text-align: right;
 }
+
+.bg-secondary{
+    background-color: #666 !important;
+}
+.bg-light{
+    background-color: #ccc !important;
+}
+
+/* Start Post content */
+
+/* End Post Content */
+/* start sidebar */
+.latest-post, .latest-comment{
+    padding:0 15px;
+
+}
+
+.latest-post .latest-post-item,.latest-comment .latest-comment-item{
+    padding: 6px;
+}
+
+.latest-post li:first-child, .latest-comment li:first-child{
+    border-top: 0;
+}
+.latest-post li:last-child, .latest-comment li:last-child{
+    border-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* end sidebar */
