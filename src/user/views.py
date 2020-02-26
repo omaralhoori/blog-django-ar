@@ -3,6 +3,8 @@ from .forms import UserCreationForm,LoginForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from blog.models import Post
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 def register(req):
@@ -14,7 +16,7 @@ def register(req):
             new_user.set_password(form.cleaned_data['password1'])
             new_user.save()
             messages.success(req, f'تهانينا {new_user} ,لقد تم التسجيل بنجاح ')
-            return redirect('home')
+            return redirect('login')
     else:
         form = UserCreationForm()
     return render(req, 'user/register.html',{
@@ -48,6 +50,7 @@ def logout_user(req):
         'title': 'تسجيل الخروج',
     })
 
+@login_required(login_url='login')
 def profile(req):
     posts = Post.objects.filter(author=req.user)
     return render(req, 'user/profile.html',{
