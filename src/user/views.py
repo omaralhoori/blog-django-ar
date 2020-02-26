@@ -9,9 +9,11 @@ def register(req):
     if req.method == 'POST':
         form = UserCreationForm(req.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data['username']
-            messages.success(req, f'تهانينا {username} ,لقد تم التسجيل بنجاح ')
+            new_user = form.save(commit=False)
+            # username = form.cleaned_data['username']
+            new_user.set_password(form.cleaned_data['password1'])
+            new_user.save()
+            messages.success(req, f'تهانينا {new_user} ,لقد تم التسجيل بنجاح ')
             return redirect('home')
     else:
         form = UserCreationForm()
