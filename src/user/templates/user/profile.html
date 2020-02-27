@@ -21,7 +21,7 @@
         <div class="col-md mb-5">
             <h3 class="border-bottom pb-3 mb-4">عدد التدوينات التي دونتها</h3>
             <h4 class="bg-secondary text-center p-4 text-light">
-               {{posts.count}}
+               {{posts_count}}
             </h4>
             <h3 class="border-bottom mb-4 pb-3 mt-5">تدويناتي </h3>
             {% for post in posts %}
@@ -32,13 +32,7 @@
                 <h4 class="text-center mb-5">لا يوجد تدوينات</h4>
             {% endfor %}
             
-            {% if posts.count >= 2 %}
-            <div class="border-top pt-3 mt-4  text-center">
-                <a href="" class="btn btn-secondary bg-secondary">التالي</a>
-                <span class="pr-4 pl-4">صفحة 1 من 10</span>
-                <a href="" class="btn btn-secondary bg-secondary">السابق</a>
-            </div>
-            {% endif %}
+            {% include 'blog/pagination.html' with page=posts %}
             
         </div>
     </div>
