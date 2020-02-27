@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UserCreationForm,LoginForm
+from .forms import UserCreationForm,LoginForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from blog.models import Post
@@ -71,3 +71,28 @@ def profile(req):
         'page': page,
         'posts_count': posts_count
     })
+    
+@login_required(login_url='login')
+def profile_update(req):
+    if req.method == 'POST':
+        user_form = UserUpdateForm(req.POST or None,instance=req.user)
+        profile_form = ProfileUpdateForm(req.POST or None,req.FILES,instance=req.user.profile)
+        if user_form.is_valid and profile_form.is_valid:
+            print('passed from here')
+            user_form.save()
+            profile_form.save()
+            messages.success(
+                req, 'تم تحديث الملف الشخصي بنجاح ')
+            return redirect('profile')
+
+    else:
+        user_form = UserUpdateForm(instance=req.user)
+        profile_form = ProfileUpdateForm(instance=req.user.profile)
+
+    context = {
+        'title': 'تعديل الملف الشخصي',
+        'user_form': user_form,
+        'profile_form': profile_form
+    }
+
+    return render(req, 'user/profile_update.html', context)
