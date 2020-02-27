@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
         <div class="border p-3 mb-3">
-            <img class="img-fluid rounded-circle border m-2 " src="{{post.author.profile.image.url}}" width="100px" alt="صورة الناشر" />
+            <img class="img-fluid rounded-circle border m-2 " src="{{post.author.profile.image.url}}" style="width:75px;height:75px;" alt="صورة الناشر" />
             <span class="text-secondary">نشر في {{post.post_date|date:'d-m-Y'}}
             <h3><a class="text-dark" href="">{{post.title}}</a></h3>
             <p>{{post.content}}</p>
