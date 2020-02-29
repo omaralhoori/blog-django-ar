@@ -53,3 +53,11 @@ body{
 .btn{
     cursor: pointer !important;
 }
+
+.btn-editing{
+    float: left;
+}
+
+.back-btn{
+    float: left;
+}

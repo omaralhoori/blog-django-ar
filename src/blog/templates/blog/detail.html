@@ -5,7 +5,15 @@
         <div class="border p-3 mb-3">
             <img class="img-fluid rounded-circle border m-2 " src="{{post.author.profile.image.url}}" style="width:75px;height:75px;" alt="صورة الناشر" />
             <span class="text-secondary">نشر في {{post.post_date|date:'d-m-Y'}}
-            <h3><a class="text-dark" href="">{{post.title}}</a></h3>
+            <!-- Button of editing -->
+            {% if post.author == user %}
+            <div class="form-group btn-editing">
+                <a href="{% url 'post_update' post.id %}" class="btn btn-secondary">تحرير</a>
+                <a href="{% url 'post_delete' post.id %}" class="btn btn-danger">حذف</a>
+            </div>
+            {% endif %}
+            
+            <h3>{{post.title}}</h3>
             <p>{{post.content}}</p>
         </div>
         <div>
